@@ -38,3 +38,14 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+# Local properties
+local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
