@@ -4,6 +4,7 @@ import com.misterjerry.spring_study.domain.Member
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
+
 class MemberServiceTest {
 
     lateinit var  memberService : MemberService

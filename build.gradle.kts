@@ -30,8 +30,11 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     //jdbc
-    implementation ("org.springframework.boot:spring-boot-starter-jdbc")
-    runtimeOnly ("com.h2database:h2")
+    //implementation ("org.springframework.boot:spring-boot-starter-jdbc")
+
+
+	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly ("com.h2database:h2")
 }
 
 kotlin {
