@@ -12,7 +12,7 @@ import javax.sql.DataSource
 class RemoteMemberRepositoryImpl(
     private val dataSource: DataSource
 ) : MemberRepository {
-    override fun save(member: Member) {
+    override fun save(member: Member): Member {
         val sql = "insert into member(name) values(?)"
         var connection: Connection? = null
         var preparedStatement: PreparedStatement? = null
@@ -38,6 +38,8 @@ class RemoteMemberRepositoryImpl(
             DataSourceUtils.releaseConnection(connection,dataSource)
 
         }
+
+        return member
 
     }
 

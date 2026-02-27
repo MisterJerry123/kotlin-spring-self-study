@@ -8,8 +8,9 @@ class RemoteJpaMemberRepositoryImpl(
 ) : MemberRepository {
 
 
-    override fun save(member: Member) {
+    override fun save(member: Member): Member {
         entityManager.persist(member)
+        return member
     }
 
     override fun findById(id: Long): Member? {

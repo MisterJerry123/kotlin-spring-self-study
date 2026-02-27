@@ -2,9 +2,10 @@ package com.misterjerry.spring_study.service
 
 import com.misterjerry.spring_study.domain.Member
 import com.misterjerry.spring_study.repository.MemberRepository
-import com.misterjerry.spring_study.repository.RemoteMemberRepositoryImpl
 import jakarta.transaction.Transactional
+import org.springframework.stereotype.Service
 
+@Service
 @Transactional
 open class MemberService(
     private val memberRepository: MemberRepository
@@ -12,12 +13,13 @@ open class MemberService(
 
 
     //회원가입
-    open fun join(member: Member){
+    open fun join(member: Member):Long{
         //같은 회원이 있으면 안됨
         val result = memberRepository.findByName(member.name)?.let {
             throw IllegalStateException("이미 존재하는 회원입니다.")
         }
-        memberRepository.save(member)
+        val userId = memberRepository.save(member)
+        return userId.id
     }
 
     open fun findMembers():List<Member>{

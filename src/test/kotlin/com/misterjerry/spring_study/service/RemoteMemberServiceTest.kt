@@ -2,20 +2,18 @@ package com.misterjerry.spring_study.service
 
 import com.misterjerry.spring_study.domain.Member
 import com.misterjerry.spring_study.repository.MemberRepository
-import com.misterjerry.spring_study.repository.RemoteMemberRepositoryImpl
-import jakarta.persistence.EntityManager
-import org.junit.jupiter.api.Assertions.*
+import jakarta.transaction.Transactional
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.transaction.annotation.Transactional
-import javax.sql.DataSource
 
 @SpringBootTest
 @Transactional
 class RemoteMemberServiceTest {
     @Autowired
-    lateinit var memberRepository: MemberRepository
+    lateinit var springDataJpaMemberRepository: MemberRepository
     @Autowired
     lateinit var memberService: MemberService
 
@@ -39,8 +37,9 @@ class RemoteMemberServiceTest {
         memberService.join(member3)
 
         //then
+        val findMember = memberService.findOne(member1.id)
 
-        assertEquals(memberService.findOne(member1.id).name,member1.name)
+        assertEquals(member1.name, findMember.name)
     }
 
     @Test

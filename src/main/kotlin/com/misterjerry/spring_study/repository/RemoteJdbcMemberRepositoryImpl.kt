@@ -17,7 +17,7 @@ class RemoteJdbcMemberRepositoryImpl(
 
     private val jdbcTemplate = JdbcTemplate(dataSource)
 
-    override fun save(member: Member) {
+    override fun save(member: Member): Member {
 
 
         val jdbcInsert = SimpleJdbcInsert(jdbcTemplate)
@@ -50,6 +50,7 @@ class RemoteJdbcMemberRepositoryImpl(
             DataSourceUtils.releaseConnection(connection,dataSource)
 
         }
+        return member
 
     }
 

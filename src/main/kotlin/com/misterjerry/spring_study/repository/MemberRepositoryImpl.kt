@@ -8,8 +8,9 @@ class MemberRepositoryImpl : MemberRepository {
     var sequence : Long = 0L
 
 
-    override fun save(member: Member) {
+    override fun save(member: Member): Member {
         store[++sequence] = member
+        return member
 
     }
 
