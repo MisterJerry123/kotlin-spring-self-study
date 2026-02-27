@@ -5,7 +5,7 @@ import com.misterjerry.spring_study.repository.MemberRepository
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
-@Service
+
 @Transactional
 open class MemberService(
     private val memberRepository: MemberRepository
@@ -18,8 +18,11 @@ open class MemberService(
         val result = memberRepository.findByName(member.name)?.let {
             throw IllegalStateException("이미 존재하는 회원입니다.")
         }
-        val userId = memberRepository.save(member)
-        return userId.id
+        val savedMember = memberRepository.save(member)
+
+        println("### DEBUG: savedMember.id = ${savedMember.id}")
+
+        return savedMember.id
     }
 
     open fun findMembers():List<Member>{

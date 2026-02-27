@@ -17,6 +17,7 @@ class SpringConfig(
         return MemberService(springDataJpaMemberRepository)
     }
 
+
 //    @Bean
 //    fun memberRepository(): MemberRepository{
 //        return RemoteJpaMemberRepositoryImpl(entityManager)
